@@ -1,4 +1,4 @@
-
+// Seventh Exercice : it can handle the -
 
 public class Rational {
 	private int numerator;
