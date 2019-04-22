@@ -45,7 +45,10 @@ public class Rational {
 			result = soustraction(rational1,rational2).toString();
 		}else if(o.equals("*")) {
 			result = multiplication(rational1, rational2).toString();
+		}else if(o.equals("/")) {
+			result = division(rational1, rational2).toString();
 		}
+		
 		
 		String[] res = result.split("/");
 		if(res[0].equals("0")) {
@@ -95,6 +98,11 @@ public class Rational {
     
     public static Rational multiplication(Rational rational1,Rational rational2){
     	Rational result=new Rational((rational1.getNumerateur()*rational2.getNumerateur()),(rational1.getDenominateur()*rational2.getDenominateur()));
+    	return toCanonique(result); 
+    }
+    
+    public static Rational division(Rational rational1,Rational rational2){
+    	Rational result=new Rational((rational1.getNumerateur()*rational2.getDenominateur()),(rational1.getDenominateur()*rational2.getNumerateur()));
     	return toCanonique(result); 
     }
 
