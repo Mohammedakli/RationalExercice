@@ -38,6 +38,7 @@ public class Rational {
 		
 		Rational rational1 = new Rational(n1, d1);
 		Rational rational2 = new Rational(n2, d2);
+		
 		if(o.equals("+")) {
 			result = rational1.addition(rational2).toString();
 			}

@@ -11,5 +11,11 @@ public class IntegerNumber extends Rational {
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Override
+	public String toString() {
+		
+		return (Integer.toString(super.getNumerateur()));
+	}
+	
 	
 }
