@@ -47,19 +47,24 @@ public class Rational {
 			result = multiplication(rational1, rational2).toString();
 		}else if(o.equals("/")) {
 			result = division(rational1, rational2).toString();
+		}else if(o.equals("==")) {
+			result = egalite(rational1, rational2);
 		}
 		
-		
-		String[] res = result.split("/");
-		if(res[0].equals("0")) {
-			System.out.println(res[0]);
-		}else {
-			if(res[1].equals("1")) {
+		if(!o.equals("==")) {
+			String[] res = result.split("/");
+			if(res[0].equals("0")) {
 				System.out.println(res[0]);
 			}else {
-				System.out.println(result);
-				//assert result.equals("16/32");
+				if(res[1].equals("1")) {
+					System.out.println(res[0]);
+				}else {
+					System.out.println(result);
+					//assert result.equals("16/32");
+				}
 			}
+		}else {
+			System.out.println(result);
 		}
 	}
 	@Override
@@ -108,6 +113,16 @@ public class Rational {
     public static Rational division(Rational rational1,Rational rational2){
     	Rational result=new Rational((rational1.getNumerateur()*rational2.getDenominateur()),(rational1.getDenominateur()*rational2.getNumerateur()));
     	return toCanonique(result); 
+    }
+    
+    public static String egalite(Rational rational1,Rational rational2) {
+    	rational1 = toCanonique(rational1);
+    	rational2 = toCanonique(rational2);
+    	if(rational1.getNumerateur() == rational2.getNumerateur() && rational1.getDenominateur() == rational2.getDenominateur()) {
+    		return "Equal";
+    	}else {
+    		return "Not Equal";
+    	}
     }
 
 	
