@@ -43,6 +43,9 @@ public class Rational {
 		if(o.equals("+")) {
 			result = addition(rational1,rational2).toString();
 			}
+		else if(o.equals("-")) {
+			result = soustraction(rational1,rational2).toString();
+		}
 		System.out.println(result);
 		//assert result.equals("16/32");
 	}
@@ -53,7 +56,7 @@ public class Rational {
 		return (numerator + "/" + denuminator);
 	}
 	
-	public static int pGCD(int a,int b){
+	public static int PGCD(int a,int b){
         if(a<0) a=-a;
         else
             if(a==0) return b;
@@ -63,12 +66,12 @@ public class Rational {
         if(a==b)
             return a;
         if(a<b)
-            return pGCD(a,b-a);
-        return pGCD(a-b,b);
+            return PGCD(a,b-a);
+        return PGCD(a-b,b);
     }
 	
 	public static Rational toCanonique(Rational rational){
-        int pgcd=pGCD(rational.getNumerateur(),rational.getDenominateur());
+        int pgcd=PGCD(rational.getNumerateur(),rational.getDenominateur());
         rational.setNumerateur(rational.getNumerateur()/pgcd);
         rational.setDenominateur(rational.getDenominateur()/pgcd);
         return rational;
@@ -79,6 +82,10 @@ public class Rational {
     	return toCanonique(result);
     }
 	
+    public static Rational soustraction(Rational rational1,Rational rational2){
+    	Rational result=new Rational(rational1.getNumerateur()*rational2.getDenominateur()-rational1.getDenominateur()*rational2.getNumerateur(),rational1.getDenominateur()*rational2.getDenominateur());
+    	return toCanonique(result);
+    }
 
 	
 
