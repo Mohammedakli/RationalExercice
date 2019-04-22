@@ -1,5 +1,3 @@
-// Seventh Exercice : it can handle the -.
-
 public class Rational {
 	private int numerator;
 	private int denuminator;
@@ -30,13 +28,13 @@ public class Rational {
 		String result = "";
 		
 		String[] a = args[0].split("/");  
-		String o = args[1];
+		String o = args[1].replace("'", "");
 		String[] b = args[2].split("/");
 		
-		int n1 = Integer.parseInt(a[0]);	// Integer.parseInt(args[0]); 
-		int n2 = Integer.parseInt(b[0]);	// Integer.parseInt(args[1]);
-		int d1 = Integer.parseInt(a[1]);	// Integer.parseInt(args[2]);
-		int d2 = Integer.parseInt(b[1]);	// Integer.parseInt(args[3]);
+		int n1 = Integer.parseInt(a[0]);
+		int n2 = Integer.parseInt(b[0]);
+		int d1 = Integer.parseInt(a[1]);
+		int d2 = Integer.parseInt(b[1]);
 		
 		Rational rational1 = new Rational(n1, d1);
 		Rational rational2 = new Rational(n2, d2);
@@ -45,6 +43,8 @@ public class Rational {
 			}
 		else if(o.equals("-")) {
 			result = soustraction(rational1,rational2).toString();
+		}else if(o.equals("*")) {
+			result = multiplication(rational1, rational2).toString();
 		}
 		
 		String[] res = result.split("/");
@@ -91,6 +91,11 @@ public class Rational {
     public static Rational soustraction(Rational rational1,Rational rational2){
     	Rational result=new Rational(rational1.getNumerateur()*rational2.getDenominateur()-rational1.getDenominateur()*rational2.getNumerateur(),rational1.getDenominateur()*rational2.getDenominateur());
     	return toCanonique(result);
+    }
+    
+    public static Rational multiplication(Rational rational1,Rational rational2){
+    	Rational result=new Rational((rational1.getNumerateur()*rational2.getNumerateur()),(rational1.getDenominateur()*rational2.getDenominateur()));
+    	return toCanonique(result); 
     }
 
 	
