@@ -58,6 +58,7 @@ public class Rational {
 			}else {
 				if(res[1].equals("1")) {
 					System.out.println(res[0]);
+					IntegerNumber integernumber = new IntegerNumber(Integer.parseInt(res[0]));
 				}else {
 					System.out.println(result);
 					//assert result.equals("16/32");
