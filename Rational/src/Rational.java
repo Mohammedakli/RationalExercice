@@ -39,16 +39,16 @@ public class Rational {
 		Rational rational1 = new Rational(n1, d1);
 		Rational rational2 = new Rational(n2, d2);
 		if(o.equals("+")) {
-			result = addition(rational1,rational2).toString();
+			result = rational1.addition(rational2).toString();
 			}
 		else if(o.equals("-")) {
-			result = soustraction(rational1,rational2).toString();
+			result = rational1.soustraction(rational2).toString();
 		}else if(o.equals("*")) {
-			result = multiplication(rational1, rational2).toString();
+			result = rational1.multiplication(rational2).toString();
 		}else if(o.equals("/")) {
-			result = division(rational1, rational2).toString();
+			result = rational1.division(rational2).toString();
 		}else if(o.equals("==")) {
-			result = egalite(rational1, rational2);
+			result = rational1.egalite(rational2);
 		}
 		
 		if(!o.equals("==")) {
@@ -95,25 +95,45 @@ public class Rational {
         return rational;
     }
 	
+	public Rational addition(Rational rational) {
+		return addition(this, rational);
+	}
+	
     public static Rational addition(Rational rational1,Rational rational2){
     	Rational result=new Rational(rational1.getNumerateur()*rational2.getDenominateur()+rational1.getDenominateur()*rational2.getNumerateur(),rational1.getDenominateur()*rational2.getDenominateur());
     	return toCanonique(result);
     }
+    
+    public Rational soustraction(Rational rational) {
+		return soustraction(this, rational);
+	}
 	
     public static Rational soustraction(Rational rational1,Rational rational2){
     	Rational result=new Rational(rational1.getNumerateur()*rational2.getDenominateur()-rational1.getDenominateur()*rational2.getNumerateur(),rational1.getDenominateur()*rational2.getDenominateur());
     	return toCanonique(result);
     }
     
+    public Rational multiplication(Rational rational) {
+		return multiplication(this, rational);
+	}
+    
     public static Rational multiplication(Rational rational1,Rational rational2){
     	Rational result=new Rational((rational1.getNumerateur()*rational2.getNumerateur()),(rational1.getDenominateur()*rational2.getDenominateur()));
     	return toCanonique(result); 
     }
     
+    public Rational division(Rational rational) {
+		return division(this, rational);
+	}
+    
     public static Rational division(Rational rational1,Rational rational2){
     	Rational result=new Rational((rational1.getNumerateur()*rational2.getDenominateur()),(rational1.getDenominateur()*rational2.getNumerateur()));
     	return toCanonique(result); 
     }
+    
+    public String egalite(Rational rational) {
+		return egalite(this, rational);
+	}
     
     public static String egalite(Rational rational1,Rational rational2) {
     	rational1 = toCanonique(rational1);
