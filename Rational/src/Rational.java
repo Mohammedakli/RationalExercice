@@ -29,7 +29,7 @@ public class Rational {
 		
 		String result = "";
 		
-		String[] a = args[0].split("/");
+		String[] a = args[0].split("/");  
 		String o = args[1];
 		String[] b = args[2].split("/");
 		
@@ -53,9 +53,30 @@ public class Rational {
 		return (numerator + "/" + denuminator);
 	}
 	
+	public static int pGCD(int a,int b){
+        if(a<0) a=-a;
+        else
+            if(a==0) return b;
+        if(b<0)  b=-b;
+        else  
+            if(b==0) return a;
+        if(a==b)
+            return a;
+        if(a<b)
+            return pGCD(a,b-a);
+        return pGCD(a-b,b);
+    }
+	
+	public static Rational toCanonique(Rational rational){
+        int pgcd=pGCD(rational.getNumerateur(),rational.getDenominateur());
+        rational.setNumerateur(rational.getNumerateur()/pgcd);
+        rational.setDenominateur(rational.getDenominateur()/pgcd);
+        return rational;
+    }
+	
     public static Rational addition(Rational rational1,Rational rational2){
     	Rational result=new Rational(rational1.getNumerateur()*rational2.getDenominateur()+rational1.getDenominateur()*rational2.getNumerateur(),rational1.getDenominateur()*rational2.getDenominateur());
-    	return result;
+    	return toCanonique(result);
     }
 	
 
