@@ -1,7 +1,24 @@
 
+
 public class Rational {
 	private int numerator;
 	private int denuminator;
+	
+	public void setNumerateur(int a){
+		numerator=a;
+    }
+    public int getNumerateur(){
+        return numerator;
+    }
+    
+    public void setDenominateur(int a){
+        if(a==0) System.out.println("Erreur Division par ZERO!");
+        else 
+        	denuminator=a;
+    }
+    public int getDenominateur(){
+        return denuminator;
+    }
 
 	public Rational(int n1, int d1) {
 		numerator = n1;
@@ -10,20 +27,19 @@ public class Rational {
 
 	public static void main(String args[]) {
 		
-		int n1 = Integer.parseInt(args[0]); 
-		int n2 = Integer.parseInt(args[1]);
-		int d1 = Integer.parseInt(args[2]);
-		int d2 = Integer.parseInt(args[3]);
+		String[] a = args[0].split("/");
+		String[] b = args[1].split("/");
 		
-		Rational r = add(new Rational(n1, d1), new Rational(n2, d2));
-		String result = Integer.toString(r.numerator) + "/" + Integer.toString(r.denuminator);
-		
-		String output = r.toString();
-		System.out.println(output);
-		
-		
-		
-		assert result.equals("16/32");
+		int n1 = Integer.parseInt(a[0]);	// Integer.parseInt(args[0]); 
+		int n2 = Integer.parseInt(b[0]);	// Integer.parseInt(args[1]);
+		int d1 = Integer.parseInt(a[1]);	// Integer.parseInt(args[2]);
+		int d2 = Integer.parseInt(b[1]);	// Integer.parseInt(args[3]);
+			
+		Rational rational1 = new Rational(n1, d1);
+		Rational rational2 = new Rational(n2, d2);
+		String result = addition(rational1,rational2).toString();
+		System.out.println(result);
+		//assert result.equals("16/32");
 	}
 	@Override
 
@@ -31,16 +47,13 @@ public class Rational {
 		
 		return (numerator + "/" + denuminator);
 	}
+	
+    public static Rational addition(Rational rational1,Rational rational2){
+    	Rational result=new Rational(rational1.getNumerateur()*rational2.getDenominateur()+rational1.getDenominateur()*rational2.getNumerateur(),rational1.getDenominateur()*rational2.getDenominateur());
+    	return result;
+    }
+	
 
-	private static Rational add(Rational rational, Rational rational2) {
-		
-		int n1 = rational.numerator;
-		int n2 = rational2.numerator;
-		int d2 = rational2.denuminator;
-		int d1 = rational.denuminator;
-		int n = (n1*d2+n2*d1);
-		int d = (d1*d2);
-		return new Rational(n, d) ;
-	}
+	
 
 }
