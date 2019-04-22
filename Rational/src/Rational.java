@@ -46,8 +46,14 @@ public class Rational {
 		else if(o.equals("-")) {
 			result = soustraction(rational1,rational2).toString();
 		}
-		System.out.println(result);
-		//assert result.equals("16/32");
+		
+		String[] res = result.split("/");
+		if(res[0].equals("0")) {
+			System.out.println(res[0]);
+		}else {
+			System.out.println(result);
+			//assert result.equals("16/32");
+		}
 	}
 	@Override
 
