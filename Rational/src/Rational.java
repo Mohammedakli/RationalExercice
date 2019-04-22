@@ -27,17 +27,22 @@ public class Rational {
 
 	public static void main(String args[]) {
 		
+		String result = "";
+		
 		String[] a = args[0].split("/");
-		String[] b = args[1].split("/");
+		String o = args[1];
+		String[] b = args[2].split("/");
 		
 		int n1 = Integer.parseInt(a[0]);	// Integer.parseInt(args[0]); 
 		int n2 = Integer.parseInt(b[0]);	// Integer.parseInt(args[1]);
 		int d1 = Integer.parseInt(a[1]);	// Integer.parseInt(args[2]);
 		int d2 = Integer.parseInt(b[1]);	// Integer.parseInt(args[3]);
-			
+		
 		Rational rational1 = new Rational(n1, d1);
 		Rational rational2 = new Rational(n2, d2);
-		String result = addition(rational1,rational2).toString();
+		if(o.equals("+")) {
+			result = addition(rational1,rational2).toString();
+			}
 		System.out.println(result);
 		//assert result.equals("16/32");
 	}
