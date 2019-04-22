@@ -54,8 +54,12 @@ public class Rational {
 		if(res[0].equals("0")) {
 			System.out.println(res[0]);
 		}else {
-			System.out.println(result);
-			//assert result.equals("16/32");
+			if(res[1].equals("1")) {
+				System.out.println(res[0]);
+			}else {
+				System.out.println(result);
+				//assert result.equals("16/32");
+			}
 		}
 	}
 	@Override
